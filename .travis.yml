@@ -37,7 +37,7 @@ deploy:
     repo: zenmetsu/sensu-plugins-cassandra
 - provider: script
   script: chmod +x bonsai/ruby-runtime/travis-build-ruby-plugin-assets.sh && bonsai/ruby-runtime/travis-build-ruby-plugin-assets.sh
-    sensu-plugins-cassandra-checks
+    sensu-plugins-cassandra
   skip_cleanup: true
   on:
     tags: true
