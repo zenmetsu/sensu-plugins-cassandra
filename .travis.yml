@@ -9,6 +9,7 @@ notifications:
   email:
     recipients:
     - vespira@gmail.com
+    - qpsk31@gmail.com
     on_success: change
     on_failure: always
 script:
