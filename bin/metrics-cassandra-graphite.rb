@@ -345,11 +345,12 @@ class CassandraMetrics < Sensu::Plugin::Metric::CLI::Graphite
         metric.gsub!(/[^a-zA-Z0-9]/, '_')  # convert all other chars to _
         metric.gsub!(/[_]*$/, '')          # remove any _'s at end of the string
         metric.gsub!(/[_]{2,}/, '_')       # convert sequence of multiple _'s to single _
-        metric.gsub!('NaN', '0')           # replacing NaN with zero due to potential graphite_plaintext issue
         metric.downcase!
         # sanitize metric values for graphite. Numbers only, please.
         # some versions of nodetool omit the '.' following the 'ms' unit.
         value = value.chomp(' ms.').chomp(' ms')
+        # replacing NaN with zero due to potential graphite_plaintext issue
+        value = value.gsub('NaN', '0')
       end
       [metric, value]
     end
