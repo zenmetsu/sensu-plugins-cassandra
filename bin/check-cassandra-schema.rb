@@ -48,13 +48,13 @@ class CheckCassandraSchema < Sensu::Plugin::Check::CLI
          long: '--port PORT',
          description: 'cassandra JMX port',
          default: '7199'
-  
+
   option :user,
          short: '-u USER',
          long: '--user USER',
          description: 'cassandra JMX username',
          default: 'cassandra'
-  
+
   option :password,
          short: '-p PASSWORD',
          long: '--password PASSWORD',
