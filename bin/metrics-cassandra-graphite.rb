@@ -140,13 +140,13 @@ class CassandraMetrics < Sensu::Plugin::Metric::CLI::Graphite
          long: '--[no-]cfstats',
          boolean: true,
          default: false
-  
+
   option :user,
          short: '-u USER',
          long: '--user USER',
          description: 'cassandra JMX username',
          default: 'cassandra'
-  
+
   option :password,
          short: '-p PASSWORD',
          long: '--password PASSWORD',
