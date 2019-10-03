@@ -36,7 +36,7 @@ deploy:
 #    rvm: 2.4.1
 #    repo: zenmetsu/sensu-plugins-cassandra
 - provider: script
-  script: chmod +x bonsai/ruby-runtime/travis-build-bonsai-assets.sh && bonsai/ruby-runtime/travis-build-bonsai-assets.sh sensu-plugins-cassandra
+  script: chmod +x bonsai/travis-build-ruby-plugin-assets.sh && bonsai/ruby-runtime/travis-build-ruby-plugin-assets.sh sensu-plugins-cassandra
   skip_cleanup: true
   on:
     tags: true
