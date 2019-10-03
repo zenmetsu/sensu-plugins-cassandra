@@ -48,10 +48,22 @@ class CheckCassandraSchema < Sensu::Plugin::Check::CLI
          long: '--port PORT',
          description: 'cassandra JMX port',
          default: '7199'
+  
+  option :user,
+         short: '-u USER',
+         long: '--user USER',
+         description: 'cassandra JMX username',
+         default: 'cassandra'
+  
+  option :password,
+         short: '-p PASSWORD',
+         long: '--password PASSWORD',
+         description: 'cassandra JMX password',
+         default: 'cassandra'
 
   # execute cassandra's nodetool and return output as string
   def nodetool_cmd(cmd)
-    out = `nodetool -h #{config[:hostname]} -p #{config[:port]} #{cmd} 2>&1`
+    out = `nodetool -h #{config[:hostname]} -p #{config[:port]} -u #{config[:user]} -pw #{config[:password]} #{cmd} 2>&1`
     [out, $CHILD_STATUS]
   end
 
