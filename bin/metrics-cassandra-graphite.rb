@@ -140,6 +140,18 @@ class CassandraMetrics < Sensu::Plugin::Metric::CLI::Graphite
          long: '--[no-]cfstats',
          boolean: true,
          default: false
+  
+  option :user,
+         short: '-u USER',
+         long: '--user USER',
+         description: 'cassandra JMX username',
+         default: 'cassandra'
+  
+  option :password,
+         short: '-p PASSWORD',
+         long: '--password PASSWORD',
+         description: 'cassandra JMX password',
+         default: 'cassandra'
 
   # convert_to_bytes(512, 'KB') => 524288
   # convert_to_bytes(1, 'MB') => 1048576
@@ -149,7 +161,7 @@ class CassandraMetrics < Sensu::Plugin::Metric::CLI::Graphite
 
   # execute cassandra's nodetool and return output as string
   def nodetool_cmd(cmd)
-    `nodetool -h #{config[:hostname]} -p #{config[:port]} #{cmd}`
+    `nodetool -h #{config[:hostname]} -p #{config[:port]} -u #{config[:user]} -pw #{config[:password]} #{cmd}`
   end
 
   # nodetool -h localhost info:
